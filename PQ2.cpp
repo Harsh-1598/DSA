@@ -120,20 +120,6 @@ bool isPalindrome(string &str){
     return isPalindrom;
 }
 
-void rotateMatrix(vector<vector<int>> &matrixx, int rows, int cols){
-    vector<vector<int>> rotatedMatrix(rows, vector<int>(cols));
-    vector<int> temp; 
-    for(int i = rows -1; i >= 0; i--){
-        for (int j = 0; j < cols; j++){
-            temp.push_back(matrixx[i][j]);
-        }
-        for (int k=0 ; k < rows; k++){
-            rotatedMatrix[k][i] = temp[k];
-        }
-    }
-    matrixx = rotatedMatrix;
-}
-
 int main(){
 
     // // Q11:
