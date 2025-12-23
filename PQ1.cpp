@@ -12,56 +12,36 @@ string gradeCalculator(int score){
 
 int max(vector<int> nums){
     int max = nums[0];
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (max < nums[i])
-        {
-            max = nums[i];
-        }
+    for (int i = 0; i < nums.size(); i++){
+        if (max < nums[i]) max = nums[i];
     }
-    
     return max;
 }
 
 int min(vector<int> nums){
     int min = nums[0];
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (min > nums[i])
-        {
-            min = nums[i];
-        }
+    for (int i = 0; i < nums.size(); i++){
+        if (min > nums[i]) min = nums[i];
     }
-    
     return min;
 }
 
 int sum(vector<int> nums){
     int sum = 0;
-    for (int i = 0; i < nums.size(); i++)
-    {
-        sum += nums[i];
-    }
-    
+    for (int i = 0; i < nums.size(); i++) sum += nums[i];
     return sum;
 }
 
 int count(vector<int> nums){
     int count = 0;
-    for (int i = 0; i < nums.size(); i++){
-        if (nums[i]>5) count++;
-    }
-
+    for (int i = 0; i < nums.size(); i++) if (nums[i]>5) count++;
     return count;
 }
 
 vector<int> reverseVector(vector<int> vector1){
     vector<int> revVector(vector1.size()); // we have to declare the size before hand to initialise the 0th index or have to add the element using the push_back() function dynamically.
     for (int i=0; i < vector1.size(); i++ ){
-        for (int j = vector1.size()-1-i; j>=0 ; j--) 
-        {
-            revVector[j] = vector1[i];     
-        }
+        for (int j = vector1.size()-1-i; j>=0 ; j--) revVector[j] = vector1[i];     
     }
     return revVector;
 }
@@ -69,18 +49,14 @@ vector<int> reverseVector(vector<int> vector1){
 bool isPalindrome(vector<int> vector1){
     vector<int> revVector = reverseVector(vector1);
     bool isPalindrom = false;
-    if (vector1 == revVector)
-    {
-        isPalindrom = true;
-    }
-                
+    if (vector1 == revVector) isPalindrom = true;                
     return isPalindrom;
 }
 
 int main(){
 
     // // Question-1:
-    // int age = 20, birth_year =2003;
+    // int age = 22, birth_year =2003;
     // int curr_year = age + birth_year;
     // cout << "Your age is " << age << " and you born in " << birth_year << " The current year is: " << curr_year << endl;
 
@@ -93,13 +69,9 @@ int main(){
     // cout << "string after correction: " << word << endl;
 
     // // Question-3:
-    // for (int i = 1; i < 11; i++)
-    // {
-    //     if (i%2==0){
-    //         cout << " Even:" << i ;
-    //     } else{
-    //         cout << " Odd:" << i ;
-    //     }
+    // for (int i = 1; i < 11; i++){
+    //     if (i%2==0) cout << " Even:" << i ;
+    //     else cout << " Odd:" << i ;
     // }
     
     // // Question-4:
@@ -169,12 +141,9 @@ int main(){
     // cout << "The replacement word: " << mess << endl;
     
     // // For the lowercase string:
-    // for (char& i: mess)  //here we taken & after the char for the modification since without the loop will work but the modification will not work. and took char since we have to modify the char present in the word not the index.
+    // for (char& i: mess)  //here '&' is taken as the refrence to the original address without that loop will work but the modification will not work. And took char since we have to modify the char present in the word not the index.
     // {
-    //     if (i >='A' && i <= 'Z' )
-    //     {
-    //         i+=32;
-    //     }
+    //     if (i >='A' && i <= 'Z' ) i+=32;
     // }
     // cout << "The lowercase string: " << mess << endl;
     

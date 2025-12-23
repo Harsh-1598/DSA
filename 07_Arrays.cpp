@@ -1,7 +1,8 @@
 #include<iostream>
 using namespace std;
 int main(){
-    int arr[5]= {1,2,3,4,5};
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);  // This calculates the size for the normal arrays 
     cout << "first element:" <<arr[0] << endl;    
     cout << "last element:" <<arr[4] << endl;
     
@@ -22,6 +23,7 @@ int main(){
     }
     cout << endl;
 
+    // Linear Search Algorithm
     int target = 1;
     bool found = false;
     for(int i=0; i<5; i++){

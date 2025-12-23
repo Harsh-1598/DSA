@@ -4,9 +4,11 @@ int main(){
     string message = "hello world!";
     cout << "Message: " << message << endl; 
     cout << "First char: " << message[0] << endl; // prints first char
-    cout << "Last char: " << message[message.length()-1] << endl; //prints second char
+    cout << "Last char: " << message[message.size()-1] << endl; //prints last char
     cout << "Greeting: " << "Hello, " + message << endl; // adds two strings
    
+    //you can use both the size() and length() method in the strings but in the vectors only size() works and in arrays both dont work until size() is used with the std:array.
+
     //comparing strings:
     string w1 = "apple";
     string w2 = "banana";
