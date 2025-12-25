@@ -134,45 +134,53 @@ void print19(int n){
     }
 }
 void print20(int n){
-    for(int i = 1; i <=n; i++){
+    int Spaces = 2*n-2;
+    for(int i = 1; i <= (2*n-1); i++){
+        int star = i;
+        if(i >= n) star = 2*n -i;
+        
         // star 
-        for(int j = 1; j <= i; j++){
+        for(int j = 1; j <= star; j++){
             cout << '*';
         }
         
         // space
-        for(int j = 1; j <= 2*(n-i) ; j++){
+        for(int j = 1; j <= Spaces ; j++){
             cout << " ";
         }
         
         // star
-        for(int j = 1; j <= i; j++){
+        for(int j = 1; j <= star; j++){
             cout << '*';
         }
-        cout << endl;
-    }
-    
-    for(int i = n-1; i >0; i--){
-        // star 
-        for(int j = 1; j <= i; j++){
-            cout << '*';
-        }
-        
-        // space
-        for(int j = 1; j <= 2*(n-i) ; j++){
-            cout << " ";
-        }
-        
-        // star
-        for(int j = 1; j <= i; j++){
-            cout << '*';
-        }
-        
+
+        if(i < n) Spaces -=2;
+        else Spaces +=2;
         cout << endl;
     }
 }
-
-
+void print21(int n){
+    for(int i = 1; i <= n; i++){
+        for (int j = 1; j <= n; j++) {
+            if(i == 1 || i == n || j == 1 || j == n ){
+                cout << '*';
+            }else cout << ' ';
+        }
+        cout << endl;
+    }
+}
+void print22(int n){
+    for(int i = 0; i < 2*n-1; i++){
+        for (int j = 0; j < 2*n-1; j++) {
+            int top = i;
+            int left = j;
+            int right = 2*n -2 -j;
+            int bottom = 2*n -2 -i;
+            cout << (n- min(min(top,bottom), min(left, right)));
+        }
+        cout << endl;
+    }
+}
 
 int main(){
     int t;
@@ -180,7 +188,7 @@ int main(){
     for(int i = 0; i < t; i++){
         int n;
         cin >> n;
-        print20(n);
+        print22(n);
     }
     return 0;
 }
