@@ -1,44 +1,32 @@
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        struct ___ {
-            static void _() {
-                std::ofstream("display_runtime.txt") << 0 << '\n';
-            }
-        };
-        std::atexit(&___::_);
-        vector<vector<int>> vect;
-        int n = nums.size();
-        if (n < 3) return vect;
+    vector<vector<int>> threeSum(vector<int> nums) {
 
-        // Sorting the array
+        int n =nums.size();
+        vector<vector<int>> ans;
+        
         sort(nums.begin(), nums.end());
 
-        // Iterating through the array
-        for (int i = 0; i < n - 2; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
+        for(int i = 0; i < n-2; i++){
+            if(i>0 && nums[i] == nums[i-1]) continue;
+            int j = i+1;
+            int k = n-1;
 
-            int l = i + 1;
-            int r = n - 1;
-
-            while (l < r) {
-                int sum = nums[i] + nums[l] + nums[r];
-                if (sum == 0) {
-                    vect.push_back({nums[i], nums[l], nums[r]});
-
-                    while (l < r && nums[l] == nums[l + 1]) l++;
-                    while (l < r && nums[r] == nums[r - 1]) r--;
-
-                    l++;
-                    r--;
+            while(j<k){
+                int sums = nums[i] + nums[j] + nums[k];
+                if(sums < 0) j++;
+                else if(sums > 0) k--;
+                else{
+                    vector<int> temp = {nums[i], nums[j], nums[k]};
+                    ans.push_back(temp);
+                    j++;
+                    k--;
+                    while(j<k && nums[j] == nums[j-1]) j++;
+                    while(j<k && nums[k] == nums[k+1]) k--;
                 }
-
-                else if(sum<0) l++;
-                else r--;
             }
         }
-
-        return vect;
+        
+        return ans;
     }
 };
-
