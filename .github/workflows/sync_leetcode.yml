@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Sync Submissions
-        uses: joshcai/leetcode-sync@v1.8 # Updated to v1.8 to support newer Node versions
+        uses: joshcai/leetcode-sync@v1.7 # Reverted back to the valid stable version
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
