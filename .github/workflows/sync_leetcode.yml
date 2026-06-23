@@ -1,9 +1,9 @@
 name: Sync Leetcode
 
 on:
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *" # Runs every 5 minutes
+    - cron: "*/5 * * * *"
 
 jobs:
   build:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Sync Submissions
-        uses: joshcai/leetcode-sync@v1.7
+        uses: joshcai/leetcode-sync@v1.8 # Updated to v1.8 to support newer Node versions
         with:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          destination-folder: 'leetcode questions' # Saves in your dedicated parent folder
+          destination-folder: 'leetcode questions'
           verbose: true
