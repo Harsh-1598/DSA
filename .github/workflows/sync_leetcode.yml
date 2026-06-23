@@ -1,8 +1,8 @@
-name: Sync Leetcode
+name: Sync Leetcode Fast
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 8 * * 6" # Runs automatically once a week
+    - cron: "*/5 * * * *" # The absolute lowest limit allowed by GitHub (Every 5 minutes)
 jobs:
   build:
     runs-on: ubuntu-latest
