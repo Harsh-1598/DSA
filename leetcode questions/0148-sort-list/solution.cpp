@@ -8,28 +8,62 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
+
+    ListNode* findMiddle(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while (fast->next != nullptr && fast->next->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        return slow;
+    }
+
+    ListNode* merge(ListNode* left, ListNode* right) {
+
+        // Stack allocated dummy node (No memory leak)
+        ListNode dummy(-1);
+        ListNode* tail = &dummy;
+
+        while (left != nullptr && right != nullptr) {
+
+            if (left->val <= right->val) {
+                tail->next = left;
+                left = left->next;
+            }
+            else {
+                tail->next = right;
+                right = right->next;
+            }
+
+            tail = tail->next;
+        }
+
+        tail->next = (left != nullptr) ? left : right;
+
+        return dummy.next;
+    }
+
     ListNode* sortList(ListNode* head) {
-        if(head == NULL || head->next == NULL || head->next == head) return head;
 
-        ListNode* temp = head;
-        vector<int> values;
+        if (head == nullptr || head->next == nullptr)
+            return head;
 
-        while (temp != NULL){
-            values.push_back(temp->val);
-            temp = temp->next;
-        }
+        // Split the list
+        ListNode* mid = findMiddle(head);
+        ListNode* right = mid->next;
+        mid->next = nullptr;
 
-        sort(values.begin(), values.end());
+        // Recursively sort both halves
+        ListNode* left = sortList(head);
+        right = sortList(right);
 
-        temp = head;
-
-        for(int i = 0; i < values.size(); i++){
-            temp->val = values[i];
-            temp = temp->next;
-        }
-
-        return head;
+        // Merge the sorted halves
+        return merge(left, right);
     }
 };
