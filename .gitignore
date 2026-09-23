@@ -1,0 +1,42 @@
+# VS Code local settings
+.vscode/
+
+# C/C++ build artifacts
+*.exe
+*.out
+*.app
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+*.pdb
+*.ilk
+
+# Common build directories
+build/
+bin/
+out/
+debug/
+release/
+
+# Debugger and compiler files
+*.dSYM/
+*.gch
+*.idb
+*.ipch
+
+# Temporary and editor files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# IDE and tool caches
+.cache/
+.ccls-cache/
+compile_commands.json
