@@ -1,0 +1,40 @@
+name: LeetCode Sync
+
+on:
+  schedule:
+    # Runs every night at 00:30 UTC. For every-other-day instead,
+    # use: '30 0 */2 * *'
+    - cron: '30 0 * * *'
+  workflow_dispatch:   # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run LeetCode sync script
+        env:
+          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
+          LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+        run: python .github/scripts/leetcode_sync.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "leetcode questions"
+          git diff --cached --quiet || git commit -m "chore: sync LeetCode submissions [skip ci]"
+          git push
